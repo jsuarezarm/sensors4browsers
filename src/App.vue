@@ -21,13 +21,13 @@
 import firebase from 'firebase'
 
 export default {
-  data() {
+  data () {
     return {
       user: false,
       user_email: ''
     }
   },
-  created() {
+  created () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = true
@@ -36,10 +36,10 @@ export default {
         this.user = false
         this.user_email = ''
       }
-    });
+    })
   },
   methods: {
-    signout: function() {
+    signout: function () {
       firebase.auth().signOut().then(() => {
         this.$router.replace('signin')
       })
